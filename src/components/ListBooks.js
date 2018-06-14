@@ -7,9 +7,12 @@ class ListBooks extends Component {
     return(
       <div>
         <Grid container spacing={16} justify="center">
-          <Grid item xs={6} sm={3}>
-            <Book />
+        {this.props.books.map(book => (
+          <Grid item xs={6} sm={2} key={book.id}>
+              <Book 
+                book={book}/>       
           </Grid>
+        ))}
         </Grid>
       </div>
     )

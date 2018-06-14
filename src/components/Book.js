@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
@@ -23,36 +23,39 @@ class Book extends Component {
   };
   render() {
     const { anchorEl } = this.state;
+    const { book } = this.props;
     return(
       <div>
-        <Card>
+        <Card className="card">
+          {console.log(book)}
           <CardMedia
-            image="/static/images/cards/contemplative-reptile.jpg"
-            title="Contemplative Reptile"
+            image={book.imageLinks.thumbnail}
+            title={book.title}
+            className="card-image"
           />
-          <CardContent>
-            <Typography gutterBottom variant="headline" component="h2">
-              Lizard
+          <CardContent className="card-content">
+            <Typography gutterBottom component="h2" className="card-title">
+              {book.title}
             </Typography>
             <Typography component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+              {book.authors}
             </Typography>
           </CardContent>
-          <CardActions>
-            <IconButton
+          <CardActions className="card-actions">
+            <Button
               aria-owns={anchorEl ? 'simple-menu' : null}
               aria-haspopup="true"
               onClick={this.handleClick}
+              className="card-open-menu"
               >
-              <MoreVertIcon />
-            </IconButton>
+              move to:
+            </Button>
             
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
-              onClose={this.handleClose}  
+              onClose={this.handleClose}
             >
               <MenuItem>Currently reading</MenuItem>
               <MenuItem>Want to read</MenuItem>

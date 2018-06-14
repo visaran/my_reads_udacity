@@ -3,3 +3,31 @@
   width: 100%;
   margin: 0 auto;
 }
+
+.bookshelf-title {
+  border-bottom: 1px solid #000;
+}
+
+.card {
+  position: relative;
+  min-height: 425px;
+  max-width: 140px;
+}
+
+.card-title {
+  font-weight: bold!important;
+}
+
+.card-image {
+  height: 195px;
+  background-position: center 0;
+}
+
+.card-content {
+  padding: 10px 15px;
+}
+
+.card-actions {
+  position: absolute;
+  bottom: 0;
+}

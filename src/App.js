@@ -16,7 +16,6 @@ class BooksApp extends Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
-    teste: 'teste'
   }
 
   componentDidMount() {
@@ -26,15 +25,25 @@ class BooksApp extends Component {
   }
 
   render() {
+
     return (
       <CssBaseline>
         <div className="app">
           <Header
             title="MyReads"/>
-          <Grid container className="container">
-            <h2>Currently Reading</h2>
-            <ListBooks />
-          </Grid>
+          <div className="container">
+            <h2 className="bookshelf-title">Currently Reading</h2>
+            <ListBooks
+              books={this.state.books}/>
+
+            <h2 className="bookshelf-title">Want to Read</h2>
+            <ListBooks
+              books={this.state.books}/>
+
+            <h2 className="bookshelf-title">Read</h2>
+            <ListBooks
+              books={this.state.books}/>
+          </div>
         </div>
       </CssBaseline>
     )

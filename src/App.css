@@ -31,3 +31,9 @@
   position: absolute;
   bottom: 0;
 }
+
+.floating-button {
+  position: fixed!important;
+  bottom: 15px;
+  right: 15px;
+}

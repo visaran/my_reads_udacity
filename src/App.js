@@ -4,7 +4,8 @@ import './App.css';
 import Header from './layout/Header';
 import ListBooks from './components/ListBooks';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 
 class BooksApp extends Component {
   state = {
@@ -45,6 +46,10 @@ class BooksApp extends Component {
               books={this.state.books}/>
           </div>
         </div>
+
+        <Button variant="fab" color="primary" aria-label="add" className="floating-button">
+          <AddIcon />
+        </Button>
       </CssBaseline>
     )
   }

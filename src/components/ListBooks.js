@@ -4,14 +4,17 @@ import Book from '../components/Book';
 
 class ListBooks extends Component {
   render() {
+    const { books, shelfName } = this.props;
     return(
       <div>
         <Grid container spacing={16} justify="center">
-        {this.props.books.map(book => (
-          <Grid item xs={6} sm={2} key={book.id}>
-              <Book 
-                book={book}/>       
-          </Grid>
+        {books
+          .filter((book) => book.shelf === shelfName)
+          .map(book => (
+            <Grid item xs={6} sm={2} key={book.id}>
+                <Book 
+                  book={book}/>       
+            </Grid>
         ))}
         </Grid>
       </div>

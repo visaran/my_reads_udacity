@@ -35,14 +35,17 @@ class BooksApp extends Component {
           <div className="container">
             <h2 className="bookshelf-title">Currently Reading</h2>
             <ListBooks
+              shelfName="currentlyReading"
               books={this.state.books}/>
 
             <h2 className="bookshelf-title">Want to Read</h2>
             <ListBooks
+              shelfName="wantToRead"
               books={this.state.books}/>
 
             <h2 className="bookshelf-title">Read</h2>
             <ListBooks
+              shelfName="read"
               books={this.state.books}/>
           </div>
         </div>

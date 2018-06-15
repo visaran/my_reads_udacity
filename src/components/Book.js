@@ -26,7 +26,6 @@ class Book extends Component {
     return(
       <div>
         <Card className="card">
-          {console.log(book)}
           <CardMedia
             image={book.imageLinks.thumbnail}
             title={book.title}

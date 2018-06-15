@@ -20,7 +20,7 @@
 
 .card-image {
   height: 195px;
-  background-position: center 0;
+  background-position: center 0!important;
 }
 
 .card-content {

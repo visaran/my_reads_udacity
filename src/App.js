@@ -6,6 +6,8 @@ import ListBooks from './components/ListBooks';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import { Route, Link } from 'react-router-dom';
+import SearchBooks from './pages/SearchBooks';
 
 class BooksApp extends Component {
   state = {
@@ -30,29 +32,44 @@ class BooksApp extends Component {
     return (
       <CssBaseline>
         <div className="app">
-          <Header
-            title="MyReads"/>
-          <div className="container">
-            <h2 className="bookshelf-title">Currently Reading</h2>
-            <ListBooks
-              shelfName="currentlyReading"
-              books={this.state.books}/>
+          <Route exact path="/" render={() => (
+            <div>
+              <Header
+                title="MyReads"/>
+              <div className="container">
+                <h2 className="bookshelf-title">Currently Reading</h2>
+                <ListBooks
+                  shelfName="currentlyReading"
+                  books={this.state.books}/>
 
-            <h2 className="bookshelf-title">Want to Read</h2>
-            <ListBooks
-              shelfName="wantToRead"
-              books={this.state.books}/>
+                <h2 className="bookshelf-title">Want to Read</h2>
+                <ListBooks
+                  shelfName="wantToRead"
+                  books={this.state.books}/>
 
-            <h2 className="bookshelf-title">Read</h2>
-            <ListBooks
-              shelfName="read"
-              books={this.state.books}/>
-          </div>
-        </div>
+                <h2 className="bookshelf-title">Read</h2>
+                <ListBooks
+                  shelfName="read"
+                  books={this.state.books}/>
 
-        <Button variant="fab" color="primary" aria-label="add" className="floating-button">
-          <AddIcon />
-        </Button>
+                  <Link to="/search">
+                    <Button variant="fab" color="primary" aria-label="add" className="floating-button">
+                      <AddIcon />
+                    </Button>
+                  </Link>
+              </div>
+            </div>
+          )} />
+
+          <Route path="/search" render={() => (
+            <div>
+              <Header
+                title="Search Books"/>
+              <SearchBooks />
+            </div>
+          )} />
+            
+        </div> 
       </CssBaseline>
     )
   }

@@ -2,6 +2,7 @@
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .bookshelf-title {
@@ -36,4 +37,13 @@
   position: fixed!important;
   bottom: 15px;
   right: 15px;
+}
+
+.button-back {
+  color: #fff;
+}
+
+.search-form {
+  width: 100%;
+  margin-bottom: 15px;
 }

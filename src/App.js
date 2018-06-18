@@ -35,6 +35,7 @@ class BooksApp extends Component {
           <Route exact path="/" render={() => (
             <div>
               <Header
+                isHome={true}
                 title="MyReads"/>
               <div className="container">
                 <h2 className="bookshelf-title">Currently Reading</h2>
@@ -64,8 +65,15 @@ class BooksApp extends Component {
           <Route path="/search" render={() => (
             <div>
               <Header
+                isHome={false}
                 title="Search Books"/>
-              <SearchBooks />
+              <div className="container">
+                <SearchBooks />
+                <ListBooks 
+                  shelfName="all"
+                  books={this.state.books}/>
+              </div>
+              
             </div>
           )} />
             

@@ -10,8 +10,7 @@ class ListBooks extends Component {
   render() {
     const { books, shelfName } = this.props;
     
-    let filteredBooks;
-    
+    let filteredBooks;  
 
     if (shelfName === "all") {
       filteredBooks = books;
@@ -22,13 +21,13 @@ class ListBooks extends Component {
     return(
       <div>
         <Grid container spacing={16} justify="center">
-        {filteredBooks.length && filteredBooks
+        {filteredBooks.length ? filteredBooks
           .map(book => (
             <Grid item xs={6} sm={2} key={book.id}>
-                <Book 
+                <Book
                   book={book}/>
-            </Grid> 
-        ))}
+            </Grid>
+        )) : <div>Nenhum livro foi encontrado!</div> }
         </Grid>
       </div>
     )

@@ -7,7 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import { Route, Link } from 'react-router-dom';
-import SearchBooks from './pages/SearchBooks';
+import SearchBooks from './components/SearchBooks';
 
 class BooksApp extends Component {
   state = {
@@ -68,14 +68,14 @@ class BooksApp extends Component {
                 isHome={false}
                 title="Search Books"/>
               <div className="container">
-                <SearchBooks />
-                <ListBooks 
-                  shelfName="all"
+                <SearchBooks 
                   books={this.state.books}/>
               </div>
               
             </div>
           )} />
+
+          {/* <Route path="/search" component={SearchPage}/> */}
             
         </div> 
       </CssBaseline>

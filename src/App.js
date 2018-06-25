@@ -18,17 +18,23 @@ class BooksApp extends Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false,
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-        this.setState({ books })
+        this.setState({ books });
     })
   }
 
-  render() {
+  moveTo = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+    this.setState((state) => ({
+      books: []
+    }))
+  }
 
+  render() {
+    console.log(this.state.books);
     return (
       <CssBaseline>
         <div className="app">
@@ -41,17 +47,20 @@ class BooksApp extends Component {
                 <h2 className="bookshelf-title">Currently Reading</h2>
                 <ListBooks
                   shelfName="currentlyReading"
-                  books={this.state.books}/>
+                  books={this.state.books}
+                  onMoveTo={this.moveTo}/>
 
                 <h2 className="bookshelf-title">Want to Read</h2>
                 <ListBooks
                   shelfName="wantToRead"
-                  books={this.state.books}/>
+                  books={this.state.books}
+                  onMoveTo={this.moveTo}/>
 
                 <h2 className="bookshelf-title">Read</h2>
                 <ListBooks
                   shelfName="read"
-                  books={this.state.books}/>
+                  books={this.state.books}
+                  onMoveTo={this.moveTo}/>
 
                   <Link to="/search">
                     <Button variant="fab" color="primary" aria-label="add" className="floating-button">

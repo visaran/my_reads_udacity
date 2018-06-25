@@ -8,9 +8,9 @@ class ListBooks extends Component {
   }
 
   render() {
-    const { books, shelfName } = this.props;
+    const { books, shelfName, onMoveTo } = this.props;
     
-    let filteredBooks;  
+    let filteredBooks;
 
     if (shelfName === "all") {
       filteredBooks = books;
@@ -25,7 +25,8 @@ class ListBooks extends Component {
           .map(book => (
             <Grid item xs={6} sm={2} key={book.id}>
                 <Book
-                  book={book}/>
+                  book={book}
+                  onMoveTo={onMoveTo}/>
             </Grid>
         )) : <div>Nenhum livro foi encontrado!</div> }
         </Grid>

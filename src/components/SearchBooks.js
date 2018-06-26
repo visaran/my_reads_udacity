@@ -17,8 +17,10 @@ class SearchBooks extends Component {
   }
 
   render() {
-    const { query } = this.state;
+    const { query, books } = this.state;
+    const { onMoveTo } = this.props;
 
+    console.log(books);
     return(
         <div>
           <h2>Faça sua pesquisa</h2>
@@ -29,11 +31,12 @@ class SearchBooks extends Component {
               placeholder="Search"
               value={query}
               minLength={3}
-              debounceTimeout={300}
+              debounceTimeout={400}
               onChange={event => this.searchQuery(event.target.value)} />
           </form>
           <ListBooks
-            books={this.state.books}/>
+            onMoveTo={onMoveTo}
+            books={books}/>
         </div>
       
     )

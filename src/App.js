@@ -20,17 +20,18 @@ class BooksApp extends Component {
      */
   }
 
-  componentDidMount() {
+  getAll = () => {
     BooksAPI.getAll().then((books) => {
         this.setState({ books });
-    })
+    });
+  }
+
+  componentDidMount() {
+    this.getAll();
   }
 
   moveTo = (book, shelf) => {
-    BooksAPI.update(book, shelf);
-    this.setState((state) => ({
-      books: []
-    }))
+    BooksAPI.update(book, shelf).then((res => this.getAll()));
   }
 
   render() {
@@ -77,7 +78,8 @@ class BooksApp extends Component {
                 isHome={false}
                 title="Search Books"/>
               <div className="container">
-                <SearchBooks 
+                <SearchBooks
+                  onMoveTo={this.moveTo}
                   books={this.state.books}/>
               </div>
               

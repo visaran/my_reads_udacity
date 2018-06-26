@@ -33,18 +33,24 @@ class Book extends Component {
     return(
       <div>
         <Card className="card">
-          <CardMedia
-            image={book.imageLinks.thumbnail}
-            title={book.title}
-            className="card-image"
-          />
+          {book.imageLinks ? (
+            <CardMedia
+              image={book.imageLinks.thumbnail}
+              title={book.title}
+              className="card-image"
+            />
+          ) : <img src="http://placehold.it/140x195" alt="placeholder image"/> }
+          
           <CardContent className="card-content">
             <Typography gutterBottom component="h2" className="card-title">
               {book.title}
             </Typography>
-            <Typography component="p">
-              {book.authors}
-            </Typography>
+            {book.authors && book.authors.map(author => (
+              <Typography component="p" className="author-name">
+                {author}
+              </Typography>
+            ))}
+            
           </CardContent>
           <CardActions className="card-actions">
             <Button

@@ -46,7 +46,7 @@ class Book extends Component {
               {book.title}
             </Typography>
             {book.authors && book.authors.map(author => (
-              <Typography component="p" className="author-name">
+              <Typography component="p" className="author-name" key={author}>
                 {author}
               </Typography>
             ))}

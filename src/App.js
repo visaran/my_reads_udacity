@@ -31,11 +31,15 @@ class BooksApp extends Component {
   }
 
   moveTo = (book, shelf) => {
-    BooksAPI.update(book, shelf).then((res => this.getAll()));
+    book.shelf = shelf;
+    BooksAPI.update(book, shelf).then(() => {
+      this.setState((state) => ({
+        books: state.books.filter((b) => b.id !== book.id).concat(book)
+      }));
+    });
   }
 
   render() {
-    console.log(this.state.books);
     return (
       <CssBaseline>
         <div className="app">

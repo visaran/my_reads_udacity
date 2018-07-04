@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Book from '../components/Book';
+import sortBy from 'sort-by';
 
 class ListBooks extends Component {
   state = {
@@ -17,6 +18,8 @@ class ListBooks extends Component {
     } else {
       filteredBooks = books.filter((book) => book.shelf === shelfName)
     }
+
+    filteredBooks.sort(sortBy('title'));
 
     return(
       <div>

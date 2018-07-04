@@ -11,9 +11,11 @@ class SearchBooks extends Component {
   }
 
   searchQuery = (query) => {
+    this.setState({query});
     BooksAPI.search(query).then((books) => {
-      this.setState({ books });
+      query && this.setState({ books })
     });
+    
   }
 
   render() {
@@ -25,13 +27,9 @@ class SearchBooks extends Component {
         <div>
           <h2>Faça sua pesquisa</h2>
           <form className="search-form">
-            <DebounceInput
-              element={TextField}
-              label="Search"
-              placeholder="Search"
+            <input
+              type="text"
               value={query}
-              minLength={3}
-              debounceTimeout={400}
               onChange={event => this.searchQuery(event.target.value)} />
           </form>
           <ListBooks

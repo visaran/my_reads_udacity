@@ -13,12 +13,6 @@ class Book extends Component {
     anchorEl: null,
   };
 
-  // moveTo = (book, shelf) => {
-  //   BooksAPI.update(book, shelf).then((shelf) =>{
-  //     this.setState({ shelf });
-  //   });
-  // }
-
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
@@ -30,6 +24,8 @@ class Book extends Component {
   render() {
     const { anchorEl } = this.state;
     const { book, onMoveTo } = this.props;
+
+
     return(
       <div>
         <Card className="card">
@@ -68,10 +64,10 @@ class Book extends Component {
               open={Boolean(anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={() => onMoveTo(book, 'currentlyReading')}>Currently reading</MenuItem>
-              <MenuItem onClick={() => onMoveTo(book, 'wantToRead')}>Want to read</MenuItem>
-              <MenuItem onClick={() => onMoveTo(book, 'read')}>Read</MenuItem>
-              <MenuItem onClick={() => onMoveTo(book, 'none')}>None</MenuItem>
+              <MenuItem selected={ book.shelf === 'currentlyReading' ? true : false } onClick={() => onMoveTo(book, 'currentlyReading')}>Currently reading</MenuItem>
+              <MenuItem selected={ book.shelf === 'wantToRead' ? true : false } onClick={() => onMoveTo(book, 'wantToRead')}>Want to read</MenuItem>
+              <MenuItem selected={ book.shelf === 'read' ? true : false } onClick={() => onMoveTo(book, 'read')}>Read</MenuItem>
+              <MenuItem selected={ book.shelf ? false : true } onClick={() => onMoveTo(book, 'none')}>None</MenuItem>
             </Menu>
           </CardActions>
         </Card>

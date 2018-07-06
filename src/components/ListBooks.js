@@ -10,6 +10,7 @@ class ListBooks extends Component {
 
   render() {
     const { books, shelfName, onMoveTo } = this.props;
+    const { query } = this.state;
     
     let filteredBooks;
 
@@ -19,11 +20,14 @@ class ListBooks extends Component {
       filteredBooks = books.filter((book) => book.shelf === shelfName)
     }
 
-    filteredBooks.sort(sortBy('title'));
+    if (query) {
+      filteredBooks.sort(sortBy('title'));
+    }
 
     return(
       <div>
-        <Grid container spacing={16} justify="center">
+        <h2 className="bookshelf-title">{this.props.title}</h2>
+        <Grid container spacing={16} justify="center"> 
         {filteredBooks.length ? filteredBooks
           .map(book => (
             <Grid item xs={6} sm={2} key={book.id}>
@@ -31,7 +35,7 @@ class ListBooks extends Component {
                   book={book}
                   onMoveTo={onMoveTo}/>
             </Grid>
-        )) : <div>Nenhum livro foi encontrado!</div> }
+        )) : <div>Books not found!</div> }
         </Grid>
       </div>
     )

@@ -7,15 +7,19 @@ import * as BooksAPI from '../BooksAPI';
 class SearchBooks extends Component {
   state = {
     query: '',
-    books: []
+    books: [],
+    emptyList: []
   }
 
   searchQuery = (query) => {
     this.setState({query});
-    BooksAPI.search(query).then((books) => {
-      query && this.setState({ books })
-    });
-    
+      BooksAPI.search(query).then((books) => {
+        if (query) {
+          this.setState({ books })
+        } else {
+          this.setState({ books: this.state.emptyList })
+        }
+      });
   }
 
   render() {

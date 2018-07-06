@@ -19,6 +19,7 @@ class BooksApp extends Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
   }
+  
 
   getAll = () => {
     BooksAPI.getAll().then((books) => {
@@ -40,6 +41,11 @@ class BooksApp extends Component {
   }
 
   render() {
+    const shelves = {
+      currentlyReading: ['Currently Reading', 'currentlyReading'],
+      wantToRead: ['Want to Read', 'wantToRead'],
+      read: ['Read', 'read']
+    }
     return (
       <CssBaseline>
         <div className="app">
@@ -49,24 +55,13 @@ class BooksApp extends Component {
                 isHome={true}
                 title="MyReads"/>
               <div className="container">
-                <h2 className="bookshelf-title">Currently Reading</h2>
-                <ListBooks
-                  shelfName="currentlyReading"
-                  books={this.state.books}
-                  onMoveTo={this.moveTo}/>
-
-                <h2 className="bookshelf-title">Want to Read</h2>
-                <ListBooks
-                  shelfName="wantToRead"
-                  books={this.state.books}
-                  onMoveTo={this.moveTo}/>
-
-                <h2 className="bookshelf-title">Read</h2>
-                <ListBooks
-                  shelfName="read"
-                  books={this.state.books}
-                  onMoveTo={this.moveTo}/>
-
+                { Object.keys(shelves).map((shelf) =>
+                  <ListBooks key={shelf}
+                    shelfName={shelves[shelf][1]}
+                    title={shelves[shelf][0]}
+                    books={this.state.books}
+                    onMoveTo={this.moveTo}/>
+                )}
                   <Link to="/search">
                     <Button variant="fab" color="primary" aria-label="add" className="floating-button">
                       <AddIcon />
